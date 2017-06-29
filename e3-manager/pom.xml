@@ -6,16 +6,13 @@
 		<artifactId>e3-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>cn.e3mall</groupId>
 	<artifactId>e3-manager</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>e3-manager-pojo</module>
 		<module>e3-manager-dao</module>
 		<module>e3-manager-interface</module>
 		<module>e3-manager-service</module>
-		<module>e3-manager-web</module>
 	</modules>
 	<!-- 配置tomcat插件 -->
 	<build>
