@@ -10,11 +10,11 @@ public class TbContentCategory implements Serializable {
 
     private String name;
 
-    private Integer status;
+    private Integer status;//状态。可选值:1(正常),2(删除),
 
     private Integer sortOrder;
 
-    private Boolean isParent;
+    private Boolean isParent;//该类目是否为父类目，1为true，0为false
 
     private Date created;
 
