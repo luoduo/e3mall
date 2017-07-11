@@ -22,6 +22,10 @@ public class SearchDaoImpl implements SearchDao {
 	@Autowired
 	private SolrServer solrServer;
 	
+	/**
+	 * 根据条件，查询索引库中的数据，
+	 * 并返回查询结果对象SearchResult
+	 */
 	@Override
 	public SearchResult search(SolrQuery query) throws Exception {
 		//根据查询条件查询索引库
