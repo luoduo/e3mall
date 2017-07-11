@@ -22,7 +22,7 @@ public class FreeMarkerTest {
 		//创建一个Configuration对象，直接new
 		Configuration configuration = new Configuration(Configuration.getVersion());
 		//这种模板所在目录
-		configuration.setDirectoryForTemplateLoading(new File("E:/New_beg/java%20上课资料5/workspace2/e3-item-web/src/main/webapp/WEB-INF/ftl/hello.ftl"));
+		configuration.setDirectoryForTemplateLoading(new File("E:/New_beg/workspaces/workspace-e3mall/git-reps/e3-item-web/src/main/webapp/WEB-INF/ftl/"));
 		//设置模板文件使用的编码格式，一般就是utf-8
 		configuration.setDefaultEncoding("utf-8");
 		//加载模板得到一个模板对象

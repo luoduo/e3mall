@@ -17,7 +17,13 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
-	@RequestMapping("/item/${itemId}")
+	/**
+	 * 根据商品id查询商品详细信息
+	 * @param itemId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/item/{itemId}")
 	public String showItemInfo(@PathVariable Long itemId,Model model){
 		TbItem tbItem = itemService.getItemById(itemId);
 		//转换成Item对象
