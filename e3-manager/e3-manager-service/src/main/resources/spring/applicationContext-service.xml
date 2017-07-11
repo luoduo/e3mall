@@ -18,6 +18,7 @@
 	http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 	
 	<context:component-scan base-package="cn.e3mall.service" />
+	
 	<!-- 使用dubbo发布服务 -->
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="e3-manager" />
