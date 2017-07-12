@@ -1,7 +1,6 @@
 package cn.e3mall.item.listener;
 
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
@@ -13,6 +12,7 @@ import javax.jms.TextMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import cn.e3mall.item.pojo.Item;
@@ -45,6 +45,8 @@ public class HtmlGenMassageListener implements MessageListener{
 			//获取商品详情页面的模板文件
 			Configuration configuration = freeMarkerConfigurer.getConfiguration();
 			Template template = configuration.getTemplate("item.ftl");
+			//等待数据库数据提交
+			Thread.sleep(1000);
 			//需要生成静态页面的数据，根据商品id查询数据
 			TbItem tbItem = itemService.getItemById(itemId);
 			Item item = new Item(tbItem);
