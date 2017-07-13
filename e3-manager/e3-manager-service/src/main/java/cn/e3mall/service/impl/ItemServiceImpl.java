@@ -78,6 +78,9 @@ public class ItemServiceImpl implements ItemService {
 		return item;
 	}
 
+	/**
+	 * 分页查询商品信息
+	 */
 	@Override
 	public DataGridResult getItemList(int page, int rows) {
 		// 1）设置分页信息
@@ -95,6 +98,9 @@ public class ItemServiceImpl implements ItemService {
 		return result;
 	}
 
+	/**
+	 * 添加商品信息
+	 */
 	@Override
 	public E3Result addItem(TbItem item, String desc) {
 
@@ -129,6 +135,32 @@ public class ItemServiceImpl implements ItemService {
 		});
 		return E3Result.ok();
 
+	}
+
+	/**
+	 * 根据id查询商品描述信息
+	 */
+	@Override
+	public TbItemDesc getItemDescById(Long itemId) {
+		//首先从redis缓存中进行查询
+		String json = jedisClient.get("ITEM_INFO:" + itemId + ":DESC");
+		//判断缓存中是否有数据
+		if(StringUtils.isNoneBlank(json)){
+			//把数据转换成java
+			TbItemDesc itemDesc = JsonUtils.jsonToPojo(json, TbItemDesc.class);
+			return itemDesc;
+		}
+		//redis中没有查询到，在查询数据库
+		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+		//把数据放入redis缓存
+		try {
+			jedisClient.set("ITEM_INFO:" + itemId + ":DESC",JsonUtils.objectToJson(itemDesc));
+			//设置过期时间
+			jedisClient.expire("ITEM_INFO:" + itemId + ":DESC", itemCacheExpire);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return itemDesc;
 	}
 
 }
