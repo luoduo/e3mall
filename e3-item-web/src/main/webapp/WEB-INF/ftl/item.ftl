@@ -263,7 +263,7 @@
 					href="http://www.e3mall.cn/ProductCorrection/ProductCorrection/pId/${item.id}"
 					rel="nofollow">欢迎纠错</a>
 			</div>
-			<div class="product_info">${itemDesc.itemDesc }</div>
+			<div class="product_info">${itemDesc.itemDesc}</div>
 		</div>
 			<div class="pCont" id="div-comment">
             <div class="commentList" id="commandp">
